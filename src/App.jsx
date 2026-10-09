@@ -44,10 +44,10 @@ export default function App() {
   }
 
   async function kirimForm(e) {
-    // cegah browser me-refresh halaman saat form disubmit
+    // cegah browser me-refresh halaman saat form disubmit.
     e.preventDefault();
 
-    //tentukan mode: true kalau sedang edit, false kalau tambah baru
+    //tentukan mode: true kalau sedang edit, false kalau tambah baru.
     const sedangEdit = editId !== null;
     const url = sedangEdit ? `${API_URL}/${editId}` : API_URL;
     const method = sedangEdit ? "PUT" : "POST";
