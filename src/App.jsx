@@ -16,6 +16,13 @@ export default function App() {
 
   const [editId, setEditId] = useState(null);
 
+  const [kataKunci, setKataKuci] = useState("");
+
+  // c adalah filter yang memeriksa catatan 1 per 1
+  // kenapa tolowercase karena agar selalu bisa di search
+  const hasil = catatan.filter((c) =>
+  c.judul.toLowerCase().includes(kataKunci.toLowerCase()));
+
   async function ambilData() {
     const res = await fetch(API_URL, {
       headers: { Accept: "application/json" },
@@ -112,10 +119,16 @@ export default function App() {
         </div>
       </form>
 
-      {catatan.length === 0 && <p className="kosong">Belum ada catatan.</p>}
+      {catatan.length === 0 && <p className="kosong">Kata kunci pencarian salah.</p>}
+      
+      <input
+        placeholder="Cari judul..."
+        value={kataKunci}
+        onChange={(e) => setKataKunci(e.target.value)}
+      />
       
       <div className="daftar">
-        {catatan.map((c) => (
+        {hasil.map((c) => (
           <div className="kartu" key={c.id}>
             <h3>{c.judul}</h3>
             <p>{c.isi}</p>
