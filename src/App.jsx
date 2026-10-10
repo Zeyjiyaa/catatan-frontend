@@ -16,7 +16,7 @@ export default function App() {
 
   const [editId, setEditId] = useState(null);
 
-  const [kataKunci, setKataKuci] = useState("");
+  const [kataKunci, setKataKunci] = useState("");
 
   // c adalah filter yang memeriksa catatan 1 per 1
   // kenapa tolowercase karena agar selalu bisa di search
